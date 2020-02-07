@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = *
+
+[Action]
+Description = Checking recent arch announcements
+When = PreTransaction
+Exec = /usr/bin/asafe check
+AbortOnFail

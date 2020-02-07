@@ -2,7 +2,7 @@
 set(SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/http.cpp
             ${CMAKE_CURRENT_SOURCE_DIR}/src/announce.cpp)
 
-add_library(web SHARED ${SOURCES})
+    add_library(web STATIC ${SOURCES})
 
 target_include_directories(web
     PUBLIC  ${CMAKE_CURRENT_SOURCE_DIR}/include
