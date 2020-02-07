@@ -2,7 +2,7 @@
 set(SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pacman.cpp
             ${CMAKE_CURRENT_SOURCE_DIR}/src/mode.cpp)
 
-    add_library(system STATIC ${SOURCES})
+add_library(system STATIC ${SOURCES})
 
 target_include_directories(system
     PUBLIC  ${CMAKE_CURRENT_SOURCE_DIR}/include

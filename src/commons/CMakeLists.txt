@@ -2,7 +2,8 @@ set(SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/exceptions.cpp
             ${CMAKE_CURRENT_SOURCE_DIR}/src/logging.cpp
             ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.cpp)
 
-    add_library(commons STATIC ${SOURCES})
+add_library(commons STATIC ${SOURCES})
+
 target_include_directories(commons PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_executable(commons_test ${CMAKE_CURRENT_SOURCE_DIR}/test/logging.cpp

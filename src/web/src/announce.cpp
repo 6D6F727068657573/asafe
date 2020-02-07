@@ -95,7 +95,8 @@ class aggregated_line_processor {
 
 public:
     aggregated_line_processor()
-        : collector(announcement_collector()),
+        : state_id(0),
+          collector(announcement_collector()),
           processors(create_processors<LineProcessor...>(&collector)),
           states(pointer_array<line_processor, decltype(processors)>(processors)) {}
 
