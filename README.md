@@ -25,4 +25,4 @@ ASafe is made for arch linux using libcurl. Make sure the pacman logs (usually l
 
 ## Installation
 
-Install from the AUR or download and compile the source using cmake.
+Install from the AUR or download and compile the source using `cmake`, `make`, `make test` and `make install`.
