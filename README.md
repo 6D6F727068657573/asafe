@@ -7,11 +7,11 @@ Make system upgrades more robust by automatically checking the arch announce mai
 ASafe creates a pacman hook that queries the arch linux website for manual interventions before each upgrade. By default upgrades are not executed if there is a new announcement since the last system upgrade. To prevent this behavior ASafe can be set to a complain mode or disabled by running:
 
 ```
-asafe set-mode complain
+# asafe set-mode complain
 ```
 or
 ```
-asafe set-mode disabled
+# asafe set-mode disabled
 ```
 respectively. To manually check for recent announcements run 
 ```

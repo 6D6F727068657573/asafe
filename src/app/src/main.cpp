@@ -77,7 +77,7 @@ int help() {
               << "\n"
               << "Modes:\n"
               << "\n"
-              << "\t enforce  - log and exit as failure if recent announcements have been found\n"
+              << "\t enforced  - log and exit as failure if recent announcements have been found\n"
               << "\t complain - log and exit as success if recent announcements have been found\n"
               << "\t disabled - do nothing"
               << std::endl;
