@@ -7,7 +7,7 @@
 
 namespace arch_safeguard {
 
-constexpr auto LOG_PATH = "/var/log/arch-safeguard.log";
+constexpr auto LOG_PATH = "/var/log/asafe.log";
 constexpr auto MODE_PATH = "/usr/share/asafe/mode";
 
 const auto PACMAN_CONFIG_PATH = "/etc/pacman.conf";
