@@ -39,7 +39,7 @@ TEST_CASE("read_upgrade_time parses the latest upgrade time", "[read_upgrade_tim
         auto pacman_log = file_path("files/pacman.log");
         auto upgrade_time = read_upgrade_time(pacman_log);
         auto upgrade_ctime = system_clock::to_time_t(upgrade_time);
-        auto expected_time = std::string("Wed Jan  1 17:36:39 2020\n");
+        auto expected_time = std::string("Wed Jan  1 20:07:51 2020\n");
         REQUIRE(expected_time== std::ctime(&upgrade_ctime));
     }
 }

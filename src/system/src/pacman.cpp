@@ -44,11 +44,10 @@ timestamp parse_time(const std::string& formatted_date) {
     return std::chrono::system_clock::from_time_t(std::mktime(&tm));
 }
 
-const auto upgrade_entry_pattern = R"(\[([^\s^\]]+)\] \[PACMAN\] starting full system upgrade)";
+const auto upgrade_entry_pattern = R"(\[([^\s^\]]+)\] \[ALPM\] transaction completed)";
 const auto upgrade_entry_regex = std::regex(upgrade_entry_pattern);
 
 timestamp read_upgrade_time(const file_path& pacman_log_path) {
-    const auto PACMAN_UPGRADE_COMMAND = command("pacman -Syu --noconfirm --noprogressbar");
     auto formatted_timestamp_match = find_last_line_match(pacman_log_path, upgrade_entry_regex, 1);
     if(formatted_timestamp_match.empty()) {
         throw file_format_exception(pacman_log_path, "No system upgrade found");
