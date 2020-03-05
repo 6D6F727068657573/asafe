@@ -34,7 +34,7 @@ bool is_leap_year(int year) {
 }
 
 auto DAYS_IN_MONTH =[](){
-    auto days_in_month = std::array<int,11>();
+    auto days_in_month = std::array<int,12>();
     days_in_month[0] = 31;
     days_in_month[1] = 28;
     days_in_month[2] = 31;
