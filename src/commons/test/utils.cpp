@@ -1,4 +1,5 @@
 #include <catch2/catch.hpp>
+#include <cstdlib>
 
 #include "utils.h"
 
@@ -32,5 +33,29 @@ TEST_CASE( "Construction of pointer array.", "[pointer_array]") {
         REQUIRE(&std::get<0>(tuple) == array[0]);
         REQUIRE(&std::get<1>(tuple) == array[1]);
         REQUIRE(&std::get<2>(tuple) == array[2]);
+    }
+}
+
+
+TEST_CASE( "Calculation of next month", "[next_month]") {
+    using namespace arch_safeguard;
+
+    SECTION( "Test increment of timestamp increases by one month" ) {
+	std::srand(0);
+	auto iterations = 1000;
+        auto initial_time = timestamp();
+
+	for(auto i = 0; i < iterations; ++i) {
+	    auto time = initial_time + std::chrono::hours(std::rand());
+	    auto next_time = next_month(time);
+
+	    auto timeinfo = std::chrono::system_clock::to_time_t(time);
+	    auto next_timeinfo = std::chrono::system_clock::to_time_t(next_time);
+
+	    auto month = gmtime(&timeinfo)->tm_mon;
+	    auto next_month = gmtime(&next_timeinfo)->tm_mon;
+
+	    REQUIRE(((month == 11 && next_month == 0) || (next_month - month == 1)));
+	}
     }
 }

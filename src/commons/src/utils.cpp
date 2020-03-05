@@ -33,11 +33,28 @@ bool is_leap_year(int year) {
     return year % 4 == 0 && (year % 400 == 0 || year % 100 != 0);
 }
 
+auto DAYS_IN_MONTH =[](){
+    auto days_in_month = std::array<int,11>();
+    days_in_month[0] = 31;
+    days_in_month[1] = 28;
+    days_in_month[2] = 31;
+    days_in_month[3] = 30;
+    days_in_month[4] = 31;
+    days_in_month[5] = 30;
+    days_in_month[6] = 31;
+    days_in_month[7] = 31;
+    days_in_month[8] = 30;
+    days_in_month[9] = 31;
+    days_in_month[10] = 30;
+    days_in_month[11] = 31;
+    return days_in_month;
+}();
+
 int days_in_month(int month, int year) {
     if(month == 1) {
         return is_leap_year(year) ? 29 : 28;
     }
-    return 31 - (month % 2);
+    return DAYS_IN_MONTH[month];
 }
 
 timestamp next_month(timestamp time) {
