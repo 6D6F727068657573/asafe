@@ -42,12 +42,14 @@ TEST_CASE( "Calculation of next month", "[next_month]") {
 
     SECTION( "Test increment of timestamp increases by one month" ) {
 	std::srand(0);
-	auto iterations = 1000;
-        auto initial_time = timestamp();
+	const auto mask_20 = (1 << 21) - 1;
+	const auto iterations = 10 * 1000;
+        const auto initial_time = timestamp();
 
 	for(auto i = 0; i < iterations; ++i) {
-	    auto time = initial_time + std::chrono::hours(std::rand());
-	    auto next_time = next_month(time);
+	    auto offset = std::rand() & mask_20; 
+	    auto time = initial_time + std::chrono::hours(offset);
+	    auto next_time = next_month(time);  
 
 	    auto timeinfo = std::chrono::system_clock::to_time_t(time);
 	    auto next_timeinfo = std::chrono::system_clock::to_time_t(next_time);
