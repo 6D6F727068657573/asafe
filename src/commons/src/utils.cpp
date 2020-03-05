@@ -45,10 +45,10 @@ timestamp next_month(timestamp time) {
     auto utc_time_ptr = gmtime(&timeinfo);
 
     auto day = utc_time_ptr->tm_mday;
-    auto year = utc_time_ptr->tm_year;
+    auto year = utc_time_ptr->tm_year + 1900;
     auto month = utc_time_ptr->tm_mon;
 
-    auto hours_to_next_month = 24 * (days_in_month(month, year) - day) + 1;
+    auto hours_to_next_month = 24 * (days_in_month(month, year) - day + 1) + 1;
     return time + std::chrono::hours(hours_to_next_month);
 }
 
