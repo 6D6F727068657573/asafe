@@ -65,6 +65,11 @@ TEST_CASE( "Formatting of arch announce url", "[arch_announce_url]") {
                    /* .tm_mday = */ day,
                    /* .tm_mon  = */ month - 1,
                    /* .tm_year = */ year - 1900,
+                   /* .tm_wday = */ 5,
+                   /* .tm_yday = */ 313,
+                   /* .tm_idst = */ 0,
+                   /* .tm_gmtoff = */ 0,
+                   /* .tm_zone = */ "GMT",
                  };
     tm.tm_isdst = -1; // Use DST value from local time zone
     auto some_date_in_november_2019 = std::chrono::system_clock::from_time_t(std::mktime(&tm));
