@@ -55,11 +55,11 @@ int check() {
 
     auto announcements = fetch();
     if(announcements.empty()) {
-        log(level::INFO) << "No recent announcements detected!";
+        log(level::INFO) << "No recent announcements detected!\n";
         return EXIT_SUCCESS;
     }
 
-    log(level::INFO) << "Detected " << announcements.size() << " announcement(s)";
+    log(level::INFO) << "Detected " << announcements.size() << " announcement(s)\n";
     std::cout << "Detected announcements:\n";
     std::for_each(announcements.begin(), announcements.end(), [](auto& announcement) {
         std::cout << announcement.str() << "\n\n";
@@ -107,7 +107,7 @@ int main(int argc, char* argv[]) {
 
     } catch(const std::exception& e) {
         std::cerr << "An error has occured: '" << e.what() << "'.";
-        log(level::ERROR) << e.what();
+        log(level::ERROR) << e.what() << "\n";
         return EXIT_FAILURE;
     }
 }
