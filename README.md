@@ -4,7 +4,7 @@ Make system upgrades more robust by automatically checking the arch announce mai
 
 ## Getting Started
 
-ASafe creates a pacman hook that queries the arch linux website for manual interventions before each install or upgrade. By default upgrades are not executed if there is a new announcement since the last alpm transaction. To prevent this behavior ASafe can be set to a complain mode or disabled by running:
+ASafe creates a pacman hook that queries the arch linux website for manual interventions before each install or upgrade. By default installations or upgrades are not executed if there is a new announcement since the last alpm transaction. To prevent this behavior ASafe can be set to a complain mode or disabled by running:
 
 ```
 # asafe set-mode complain
@@ -23,7 +23,7 @@ asafe check
 
 ASafe is made for arch linux using libcurl. Make sure the pacman logs (usually located in /var/log/pacman.log) have the default timestamps like '[2020-20-07T12:28:13+0100] [ALPM] ...'.
 
-The pacman hook is installed to /etc/pacman.d/hooks. If a different directory is configured that hook needs to be moved manuelly.
+The pacman hook is installed to /etc/pacman.d/hooks. If a different directory is configured that hook needs to be moved manually.
 
 ## Installation
 
