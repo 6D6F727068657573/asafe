@@ -24,9 +24,10 @@ target_link_libraries(app_test commons web)
 add_test(NAME app_test
          COMMAND app_test
          WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
- message(${CMAKE_CURRENT_SOURCE_DIR}/test)
+ 
 install(TARGETS asafe RUNTIME DESTINATION /usr/bin)
 install(FILES data/00-asafe.hook DESTINATION /etc/pacman.d/hooks)
-install(FILES data/mode DESTINATION /usr/share/asafe/)
-install(FILES data/time DESTINATION /usr/share/asafe/)
+install(FILES data/mode data/time 
+	DESTINATION /usr/share/asafe/
+	PERMISSIONS WORLD_READ OWNER_WRITE)
 
