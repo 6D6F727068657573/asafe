@@ -1,8 +1,8 @@
 #include "types.h"
 #include "settings.h"
 
-#ifndef MODE_H
-#define MODE_H
+#ifndef PERSISTENCE_H
+#define PERSISTENCE_H
 
 namespace arch_safeguard {
 
@@ -20,5 +20,9 @@ void write_mode(mode mode, const file_path& mode_path = settings::mode_path());
 
 std::ostream& operator<<(std::ostream& stream, mode mode);
 
+timestamp read_timestamp(const file_path& time_path = settings::time_path());
+
+void update_timestamp(const file_path& time_path = settings::time_path());
+
 } // arch_safeguard
-#endif // MODE_H
+#endif // PERSISTENCE_H

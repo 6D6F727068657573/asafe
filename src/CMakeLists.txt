@@ -11,6 +11,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
 enable_testing()
 add_subdirectory(commons)
-add_subdirectory(system)
 add_subdirectory(web)
 add_subdirectory(app)

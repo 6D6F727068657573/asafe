@@ -1,7 +1,7 @@
 #include <catch2/catch.hpp>
 
-#include "mode.h"
 #include "exceptions.h"
+#include "persistence.h"
 
 TEST_CASE("read_mode reads the mode from the filesystem", "[read_mode]" ) {
     using namespace arch_safeguard;
@@ -46,5 +46,17 @@ TEST_CASE("write_mode writes the mode to the filesystem", "[write_mode]" ) {
 
         write_mode(mode::DISABLED, writable_file);
         REQUIRE(mode::DISABLED == read_mode(writable_file));
+    }
+}
+
+TEST_CASE("read_timestamp reads the timestamp from the filesystem", "[read_timestamp]" ) {
+    using namespace arch_safeguard;
+
+    SECTION( "parse normal file" ) {
+        auto writable_file = file_path("files/time_normal");
+	auto timestamp = read_timestamp(writable_file);
+	auto ctimestamp = std::chrono::system_clock::to_time_t(timestamp);
+	auto expected_time = std::string("Sat Feb  3 04:05:06 2001\n");
+        REQUIRE(expected_time == std::ctime(&ctimestamp));
     }
 }

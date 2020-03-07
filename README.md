@@ -4,20 +4,25 @@ Make system upgrades more robust by automatically checking the arch announce mai
 
 ## Getting Started
 
-ASafe creates a pacman hook that queries the arch linux website for manual interventions before each install or upgrade. By default installations or upgrades are not executed if there is a new announcement since the last alpm transaction. To prevent this behavior ASafe can be set to a complain mode or disabled by running:
+ASafe queries the arch linux website for manual interventions before each install or upgrade. If a new manual intervention is found the install or upgrade will get aborted and pacman will print a message similar to:
 
-```
-# asafe set-mode complain
-```
-or
-```
-# asafe set-mode disabled
-```
-respectively. To manually check for recent announcements run 
+[INSERT MESSAGE].
+
+You can also read the message again by running:
+
 ```
 asafe check
 ```
-.
+
+To mark the issue as resolved and continue installing or upgrading, run 
+
+```
+asafe mark-resolved
+```
+
+This will ignore all messages up to the time the command was run and allow pacman to continue normally.
+
+You can also set ASafe to a complain mode or disable it temporary using the asafe set-mode command.
 
 ## Requirements
 

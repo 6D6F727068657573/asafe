@@ -1,23 +1,24 @@
 #include <array>
 #include <cstdlib>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <algorithm>
 #include <unordered_map>
 
 #include "utils.h"
-#include "mode.h"
 #include "exceptions.h"
+#include "persistence.h"
 
 namespace arch_safeguard {
 
-std::string read_file(const file_path& mode_path) {
-    auto mode_file_stream = std::ifstream(mode_path);
-    if(!mode_file_stream) {
-        throw file_open_exception(mode_path);
+std::string read_file(const file_path& file_path) {
+    auto file_stream = std::ifstream(file_path);
+    if(!file_stream) {
+        throw file_open_exception(file_path);
     }
 
-    auto stream_begin = std::istreambuf_iterator<char>(mode_file_stream);
+    auto stream_begin = std::istreambuf_iterator<char>(file_stream);
     auto stream_end = std::istreambuf_iterator<char>();
     return std::string(stream_begin, stream_end);
 }
@@ -71,5 +72,28 @@ void write_mode(mode mode, const file_path& mode_path) {
     mode_file_stream << mode << std::endl;
 }
 
+const auto TIME_FORMAT = "%F %T %z";
+
+timestamp read_timestamp(const file_path& time_path) {
+    auto time_str = read_file(time_path); 
+    trim(time_str);
+
+    if(time_str.empty()) {
+	return std::chrono::system_clock::now();
+    }
+
+    std::tm tm = {};
+    strptime(time_str.data(), TIME_FORMAT, &tm);
+    return std::chrono::system_clock::from_time_t(std::mktime(&tm));
+}
+
+void update_timestamp(const file_path& time_path) {
+    auto time_file_stream = std::ofstream(time_path);
+    if(!time_file_stream) {
+    	throw file_open_exception(time_path);
+    }
+    auto time = std::time(0); 
+    time_file_stream << std::put_time(localtime(&time), TIME_FORMAT);
+}
 
 } // arch_safeguard
