@@ -14,27 +14,27 @@ set-mode <mode>
 
 .SH DESCRIPTION
 .I asafe
-will check the Arch Linux website for recent announcments. Whereby a recent announcement is an announcement that has a timestamp that is more up to date then the last time the announcements where marked as resolved or a successfull check was performed that listed no announcements.
+will check the Arch Linux website for recent announcments. Whereby a recent announcement is an announcement that has a timestamp that is more up to date than the last time the announcements where marked as resolved or a successfull check was performed that listed no announcements.
 
 .SH COMMANDS
 
 .TP
 .B check
-Checks the Arch Linux Mailing site (https://lists.archlinux.org/pipermail/arch.announce/{month}-{year].txt) and lists all announcements who's timestamp is more recent than the date wirtten in /usr/share/asafe/time.
+Checks the Arch Linux Mailing site (https://lists.archlinux.org/pipermail/arch.announce/{month}-{year].txt) and lists all announcements which timestamp is more recent than the date written in /usr/share/asafe/time.
 
 .TP
 .B mark-resolved
-Updates the time in /usr/share/asafe/time that defnies which announcements are considered to be recent.
+Updates the time in /usr/share/asafe/time that defines which announcements are considered to be recent.
 
 .TP
 .B set-mode <mode>
-Sets the mode for running the cheks. <mode> can hold the values disabled, complain or enforced. 
+Sets the mode for running the checks. <mode> can hold the values disabled, complain or enforced. 
 
 .BR disabled
-In disabled mode asafe will only update it's timestamp without visiting the Arch Linux Mailing site.
+In disabled mode asafe will only update its timestamp without visiting the Arch Linux Mailing site.
 
 .BR enfoced
-In enforced mode a check that lists recent announcments will exit as failure, thus making the pacman hook abort the current installtion or update.
+In enforced mode a check that lists recent announcments will exit as failure, thus making the pacman hook abort the current installation or update.
 
 .BR complain
 In complain mode a check will display recent announcments without returning an error.
