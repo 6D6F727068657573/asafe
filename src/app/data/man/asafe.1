@@ -1,0 +1,34 @@
+.TH ASAFE 1 "07 MARCH 2020" asafe-v1.0.0 "ASafe Manual"
+.SH NAME
+asafe \- A lightweight Arch Announce checker.
+
+.SH SYNOPSIS
+.I asafe
+check
+
+.I asafe
+mark-resolved
+
+.I asafe
+set-mode <mode>
+
+.SH DESCRIPTION
+.I asafe
+will check the Arch Linux website for recent announcments. Whereby a recent announcement is an announcement that has a timestamp that is more up to date then the last time the announcements where marked as resolved or a successfull check was performed that listed no announcements.
+
+.SH COMMANDS
+
+.TP
+.B check
+Checks the Arch Linux Mailing site (https://lists.archlinux.org/pipermail/arch.announce/{month}-{year].txt) and lists all announcements who's timestamp is more recent than the date wirtten in /usr/share/asafe/time.
+
+.TP
+.B mark-resolved
+Updates the time in /usr/share/asafe/time that defnies which announcements are considered to be recent.
+
+.TP
+.B set-mode <mode>
+Defines the behavior of asafe. <mode> can hold the values disabled, complain or enforced. In disabled mode asafe will only update it's timestamp without visiting the Arch Linux Mailing site. In enforced mode a check that lists recent announcments will exit as failure, this triggering the pacman hook to abort the transaction. In complain mode a check will display recent announcments without returning an error.
+
+.SH LICENSE
+GPL v2 

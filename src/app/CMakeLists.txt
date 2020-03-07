@@ -34,3 +34,7 @@ install(FILES data/mode data/time
       	DESTINATION /usr/share/asafe/
 	PERMISSIONS WORLD_READ OWNER_WRITE)
 
+install(FILES data/man/asafe.1 
+      	DESTINATION /usr/share/man/man1
+	PERMISSIONS WORLD_READ OWNER_WRITE)
+
