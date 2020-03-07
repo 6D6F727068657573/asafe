@@ -28,7 +28,16 @@ Updates the time in /usr/share/asafe/time that defnies which announcements are c
 
 .TP
 .B set-mode <mode>
-Defines the behavior of asafe. <mode> can hold the values disabled, complain or enforced. In disabled mode asafe will only update it's timestamp without visiting the Arch Linux Mailing site. In enforced mode a check that lists recent announcments will exit as failure, this triggering the pacman hook to abort the transaction. In complain mode a check will display recent announcments without returning an error.
+Sets the mode for running the cheks. <mode> can hold the values disabled, complain or enforced. 
+
+.BR disabled
+In disabled mode asafe will only update it's timestamp without visiting the Arch Linux Mailing site.
+
+.BR enfoced
+In enforced mode a check that lists recent announcments will exit as failure, thus making the pacman hook abort the current installtion or update.
+
+.BR complain
+In complain mode a check will display recent announcments without returning an error.
 
 .SH LICENSE
 GPL v2 
