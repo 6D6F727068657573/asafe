@@ -20,7 +20,7 @@ Depening on the installation method it is recommended to run *asafe mark-resolve
 
 ## Installation
 
-Install from the AUR or download and compile the source using `cmake`, `make`, `make test` and `make install`.
+Compile the source using `cmake`: Just run `make`, `make test` and `make install` in the repository directory.
 
 ## Changing Permissions
 
